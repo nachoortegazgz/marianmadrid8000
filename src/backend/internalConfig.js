@@ -59,8 +59,8 @@ export const COLLECTIONS = Object.freeze({
   HISTORICO_CIERRES_Z: "HistoricoCierresZ",
   SECUENCIA_TICKETS: "SecuenciaTickets",
   CONFIGURACION_FISCAL: "ConfiguracionFiscal",
-  LIBRO_IVA_FACTURAS_EXPEDIDAS: "LibroIVAFacturasExpedidas",
-  LIBRO_IVA_FACTURAS_RECIBIDAS: "LibroIVAFacturasRecibidas",
+  LIBRO_REGISTRO_FACTURAS_EXPEDIDAS: "LibroRegistroFacturasExpedidas",
+  LIBRO_REGISTRO_FACTURAS_RECIBIDAS: "LibroRegistroFacturasRecibidas",
   PLAN_CUENTAS_CONTABLES: "PlanCuentasContables",
   ASIENTOS_CONTABLES: "AsientosContables",
   LINEAS_ASIENTO_CONTABLE: "LineasAsientoContable",
@@ -315,9 +315,7 @@ export const JWT = Object.freeze({
 export const CITA_FIELDS = Object.freeze({
   STATUS: "status",
   STATUS_PAGO: "paymentStatus",
-  STATUS_PAGO_LEGACY: "statusPago",
   PAIR_TOKEN: "pairToken",
-  UI_PAIR_TOKEN: "uiPairToken",
   SERVICE_ID: "serviceId",
   RESOURCE_ID: "resourceId",
   BOOKING_ID: "bookingId",
@@ -344,21 +342,7 @@ export const MONEY = Object.freeze({
 export const STAFF_DEFAULT_NAME = "Profesional";
 
 // =============================================================================
-// BLOQUE 14 - IDENTIDADES LEGACY PROHIBIDAS
-// =============================================================================
-export const FORBIDDEN_LEGACY_IDS = Object.freeze({
-  primaryServiceGuid: "serviceId",
-  secondaryServiceGuid: "linkedPhases",
-  staffId: "resourceId",
-  empleada: "resource",
-  lockKey: "slotKey",
-  resourceName: "displayName",
-  MmLocks: "SlotLocks",
-  CONCILIACION_STOCK_WIX: "MovimientosInventario",
-  SYNC_M365: "M365GraphSyncQueue",
-  AVAILABILITY_SLOTS_CACHE: "DualSlotCache",
-});
-
+// BLOQUE 14 - CONFIGURACION DE SEGURIDAD Y RATE LIMITING
 // =============================================================================
 // BLOQUE 15 - [FIX-D4] VALIDACION DE ACTIVE_NATIVE_IDS
 // =============================================================================

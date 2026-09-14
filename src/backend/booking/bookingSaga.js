@@ -34,7 +34,7 @@ HISTORIAL DE CAMBIOS:
   v5007.6 | 2026-09-14 | FIX EDITOR: restaurados 27 tokens corruptos por
           |            | stripping de _ y * (parse error 325:86, multiplicadores
           |            |  60  1000, constantes LOCKTTL_MS/HEARTBEAT_MS,
-          |            | COLLECTIONS.CITASF2/COMPENSACIONESPENDIENTES,
+          |            | COLLECTIONS.CITAS_F2/COMPENSACIONES_PENDIENTES,
           |            | ERROR_CODES.*, ESTADO_PAGO., ESTADO_CITA.,
           |            | _lockSlotKeyOrFail, _renewLock, _hashKey, _safeTrim,
           |            | id COMP, strings PAIRTOKENPAYLOAD_MISMATCH y
@@ -112,10 +112,10 @@ import {
 
 const log = logger;
 
-const LOCKTTL_MS = Number(CONCURRENCY?.MUTEXTTLMS) || 300000;
+const LOCKTTL_MS = Number(CONCURRENCY?.MUTEX_TTL_MS) || 300000;
 const HEARTBEAT_MS = Number(CONCURRENCY?.HEARTBEAT_MS) || 15000;
-const CITAS_COL = COLLECTIONS.CITASF2;
-const COMPENSACIONES_COL = COLLECTIONS.COMPENSACIONESPENDIENTES;
+const CITAS_COL = COLLECTIONS.CITAS_F2;
+const COMPENSACIONES_COL = COLLECTIONS.COMPENSACIONES_PENDIENTES;
 
 // =============================================================================
 // BLOCK 1 - DETERMINISTIC PAIR TOKEN
@@ -723,7 +723,6 @@ export async function executeBookingSaga(unsafePayload) {
                 pairToken: pairToken,
                 contactDetails: { email: email },
                 meta: {
-                    uiPairToken: unsafePayload?.uiPairToken || pairToken,
                     f1Start: f1LocalStart,
                     f1End: f1LocalEnd,
                     f2Start: f2LocalStart || null,
@@ -751,7 +750,6 @@ export async function executeBookingSaga(unsafePayload) {
                     pairToken: pairToken,
                     contactDetails: { email: email },
                     meta: {
-                        uiPairToken: unsafePayload?.uiPairToken || pairToken,
                         linkedF1BookingId: bookingF1Id,
                     },
                     traceId: traceId,

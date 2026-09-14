@@ -620,7 +620,6 @@ export async function _getCertifiedDualSlotsInternal(serviceId, resourceId, date
       out.push({
         fase1: { slotRef: forcedSlot, resourceId: chosen || null },
         fase2: null,
-        uiPairToken: pairToken,
         pairToken,
         candidateResourceIds,
         serviceId: resolvedServiceId,
@@ -672,7 +671,6 @@ export async function _getCertifiedDualSlotsInternal(serviceId, resourceId, date
     const pair = {
       fase1: { slotRef: _attachServiceId({ ...s1 }, resolvedServiceId, traceId, "dual_f1"), resourceId: chosenResourceId },
       fase2: { slotRef: _attachServiceId({ ...s2 }, linkedPhases, traceId, "dual_f2"), resourceId: chosenResourceId },
-      uiPairToken: pairToken,
       pairToken,
       candidateResourceIds,
       serviceId: resolvedServiceId,

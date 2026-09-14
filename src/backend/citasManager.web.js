@@ -334,8 +334,6 @@ export const rescheduleExistingBooking = webMethod(Permissions.Anyone, async (bo
       ...c,
       startDate: new Date(newSlot?.localStartDate || newSlot?.start),
       endDate: new Date(newSlot?.localEndDate || newSlot?.end),
-      startDateLocal: _normalizeLocalIsoStr(newSlot?.localStartDate || newSlot?.start),
-      endDateLocal: _normalizeLocalIsoStr(newSlot?.localEndDate || newSlot?.end),
       dateYmd: _normalizeLocalIsoStr(newSlot?.localStartDate || newSlot?.start).slice(0, 10),
       revision: currentRevision + 1,
       meta: { ..._getCitaMeta(c), lastRescheduleAt: new Date(), traceId },
@@ -369,8 +367,7 @@ function _getDualSlotInput(payload, key) {
 
 function _matchesCitaPairIdentifier(cita, token) {
   const pairToken = _safeTrim(cita.pairToken || _getCitaMeta(cita).pairToken);
-  const uiPairToken = _safeTrim(cita.uiPairToken || _getCitaMeta(cita).uiPairToken);
-  return pairToken === token || uiPairToken === token;
+  return pairToken === token;
 }
 
 function _getBookingSlotFromCita(cita) {
@@ -379,8 +376,6 @@ function _getBookingSlotFromCita(cita) {
     resourceId: cita.resourceId,
     startDate: cita.startDate,
     endDate: cita.endDate,
-    startDateLocal: cita.startDateLocal,
-    endDateLocal: cita.endDateLocal,
   };
 }
 
@@ -411,7 +406,7 @@ export const rescheduleDualBookings = webMethod(Permissions.Anyone, async (paylo
   try {
     _rateLimitOrThrow("citasManager.rescheduleDualBookings", _safeTrim(payload?.pairToken) || "anon", traceId);
 
-    const pairToken = _safeTrim(payload?.pairToken || payload?.uiPairToken);
+    const pairToken = _safeTrim(payload?.pairToken);
     if (!pairToken) {
       return { status: "ERROR", data: null, error: { code: "INVALID_PAYLOAD", message: "pairToken required" } };
     }
@@ -456,8 +451,6 @@ export const rescheduleDualBookings = webMethod(Permissions.Anyone, async (paylo
         ...c,
         startDate: new Date(targetSlot.localStartDate),
         endDate: new Date(targetSlot.localEndDate || targetSlot.localStartDate),
-        startDateLocal: targetSlot.localStartDate,
-        endDateLocal: targetSlot.localEndDate || targetSlot.localStartDate,
         dateYmd: targetSlot.localStartDate.slice(0, 10),
         revision: Number(c.revision || 0) + 1,
         meta: { ..._getCitaMeta(c), lastRescheduleAt: new Date(), traceId },
