@@ -5,7 +5,7 @@ VERSION: v5007.3-FINAL
 CORRECTIONS: LOG-01 sin global, LOG-03 PII recursiva con enmascarado real
 =============================================================================
 */
-import { makeTraceId, _maskEmail, _maskPhone, _maskName } from "public/mmUtils";
+import { makeTraceId, _maskEmail, _maskPhone, _maskName } from '../../public/mmUtils.js';
 
 export const LOG_LEVELS = Object.freeze({ DEBUG: 0, INFO: 1, WARN: 2, ERROR: 3 });
 const CURRENT_LOG_LEVEL = LOG_LEVELS.INFO;

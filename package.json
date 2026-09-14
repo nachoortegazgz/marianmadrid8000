@@ -1,13 +1,22 @@
 {
+  "name": "workspace",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Wix Velo Project - SSOT v5002.6",
+  "main": "index.js",
+  "scripts": {
+    "test": "node src/backend/__tests__/runAllTests.js",
+    "test:verbose": "node src/backend/__tests__/runAllTests.js --verbose",
+    "lint": "eslint ."
+  },
   "devDependencies": {
     "@wix/cli": "^1.0.0",
     "@wix/eslint-plugin-cli": "^1.0.0",
+    "assert": "^2.1.0",
     "eslint": "^8.25.0",
-    "react": "16.14.0"
+    "node-fetch": "^2.7.0"
   },
-  "scripts": {
-    "postinstall": "wix sync-types",
-    "dev": "wix dev",
-    "lint": "eslint ."
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

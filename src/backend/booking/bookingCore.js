@@ -621,7 +621,7 @@ export async function _persistBooking(params, traceId) {
   const dateYmd = startLocal ? startLocal.slice(0, 10) : "";
 
   const now = new Date();
-  const metaPago = String(meta?.statusPago || meta?.paymentStatus || "UNPAID");
+  const metaPago = String(meta?.paymentStatus || "UNPAID");
   const statusCita = metaPago === "PENDING_PAYMENT" ? "PENDING_PAYMENT" : "CONFIRMED";
 
   // [FIX B2] Normalizar meta para garantizar OBJECT nativo (no string)
@@ -647,16 +647,13 @@ export async function _persistBooking(params, traceId) {
 
   const doc = {
     bookingId: String(bookingId),
-    pairToken: String(normalizedMeta?.pairToken || normalizedMeta?.uiPairToken || ""),
-    uiPairToken: String(normalizedMeta?.uiPairToken || normalizedMeta?.pairToken || ""),
+    pairToken: String(normalizedMeta?.pairToken || ""),
     revision: Number(revision) || 1,
     serviceId: String(serviceId),
     scheduleId: scheduleId ? String(scheduleId) : null,
     resourceId: String(resourceId),
     startDate: startDateObj,
     endDate: endDateObj,
-    startDateLocal: startLocal,
-    endDateLocal: endLocal,
     dateYmd,
     bookingType: tipo || "simple",
     status: statusCita,

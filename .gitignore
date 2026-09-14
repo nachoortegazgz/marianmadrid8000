@@ -1,6 +1,33 @@
-# dependencies
+```
+# Dependencies
 node_modules/
+
+# Test files
+src/backend/__tests__/test-results.json
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+
+# IDE
 .vscode/
 .idea/
-.wix/
-jsconfig.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Build outputs
+dist/
+build/
+target/
+```

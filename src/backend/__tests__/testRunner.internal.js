@@ -9,9 +9,9 @@
  */
 
 import { assert } from 'assert';
-import { logInfo, logError } from '../logger';
-import { verifyFiscalHashChainIntegrity } from '../cajas.web';
-import { COLLECTIONS } from '../internalConfig';
+import { logInfo, logError } from '../logger.js';
+import { verifyFiscalHashChainIntegrity } from '../cajas.web.js';
+import { COLLECTIONS } from '../internalConfig.js';
 
 // ============================================================================
 // CONFIGURACIÓN DE PRUEBAS

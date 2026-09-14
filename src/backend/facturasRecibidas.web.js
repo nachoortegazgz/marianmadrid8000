@@ -75,7 +75,7 @@ export const registerReceivedInvoice = webMethod(Permissions.SiteMember, async (
     }
 
     const existingRes = await wixData
-      .query(COLLECTIONS.LIBRO_IVA_FACTURAS_RECIBIDAS)
+      .query(COLLECTIONS.LIBRO_REGISTRO_FACTURAS_RECIBIDAS)
       .eq("receptionNumber", receptionNumber)
       .limit(1)
       .find({ suppressAuth: true });
@@ -150,7 +150,7 @@ export const registerReceivedInvoice = webMethod(Permissions.SiteMember, async (
       _createdDate: new Date(),
     };
 
-    const saved = await wixData.insert(COLLECTIONS.LIBRO_IVA_FACTURAS_RECIBIDAS, invoiceRecord, { suppressAuth: true });
+    const saved = await wixData.insert(COLLECTIONS.LIBRO_REGISTRO_FACTURAS_RECIBIDAS, invoiceRecord, { suppressAuth: true });
 
     await _generateExpenseAccountingEntry(saved, traceId);
 
@@ -325,7 +325,7 @@ export const listReceivedInvoices = webMethod(Permissions.SiteMember, async (opt
     const fiscalPeriod = _safeTrim(options?.fiscalPeriod);
     const supplierTaxId = _safeTrim(options?.supplierTaxId);
 
-    let query = wixData.query(COLLECTIONS.LIBRO_IVA_FACTURAS_RECIBIDAS);
+    let query = wixData.query(COLLECTIONS.LIBRO_REGISTRO_FACTURAS_RECIBIDAS);
 
     if (fiscalYear) query = query.eq("fiscalYear", fiscalYear);
     if (fiscalPeriod) query = query.eq("fiscalPeriod", fiscalPeriod);
