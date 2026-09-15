@@ -65,7 +65,7 @@ function _buildDesiredProjection(item) {
     hidden: item.hidden === true || item.servicioOculto === true,
     onlinePayment: item.onlinePayment === true || item.onlinePago === true,
     inPersonPayment: item.inPersonPayment === true || item.presencialPago === true,
-    categoryId: _safeTrim(item.categoryId || item.idCategoria),
+    categoryId: _safeTrim(item.categoryId?._id || item.categoryId),
     availableStaff: _cleanGuidList(item.availableStaff),
     linkedPhases: _safeTrim(item.linkedPhases),
     allowCombine: item.allowCombine === true || item.permitirCombinar === true,
