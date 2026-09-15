@@ -2,7 +2,7 @@
 # Dependencies
 node_modules/
 
-# Test files
+# Test results
 src/backend/__tests__/test-results.json
 
 # Environment
@@ -13,21 +13,55 @@ src/backend/__tests__/test-results.json
 # Logs
 *.log
 
-# IDE
+# Editor/IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*.tmp
 
-# OS
-.DS_Store
-Thumbs.db
+# Build artifacts
+dist/
+build/
+target/
+*.o
+*.obj
+*.out
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+*.py.obj
 
 # Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Build outputs
-dist/
-build/
-target/
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
