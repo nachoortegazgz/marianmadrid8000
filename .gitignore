@@ -1,47 +1,104 @@
-```
-# Dependencies
-node_modules/
+# ============================================================================
+# .gitignore - marianmadrid8000 | SSOT v5002.6 | G10 ASCII
+# Consolidado: secretos, entornos, Wix, Qwen Code, Node, Python, OS, artefactos
+# Regla: las plantillas *.example SI se versionan; los valores reales NUNCA.
+# ============================================================================
 
-# Test results
-src/backend/__tests__/test-results.json
-
-# Environment
+# --- 1. SECRETOS Y ENTORNO (BLOQUEO ABSOLUTO) ---
 .env
-.env.local
+.env.*
+*.env
 *.env.*
+secrets.json
+secrets.local.json
+.secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*credentials*.json
+oauth_creds.json
+# Plantillas permitidas (sin valores reales):
+!.env.example
+!.env.qwen.example
 
-# Logs
+# --- 2. QWEN CODE / AGENTES IA ---
+.qwen/tmp/
+.qwen/logs/
+.qwen/checkpoints/
+.qwen/oauth_creds.json
+qwen-debug.log
+# Nota: .qwen/settings.json y QWEN.md SI se versionan (no contienen secretos)
+
+# --- 3. WIX / LOCAL EDITOR (metadatos locales de sincronizacion) ---
+.wix/
+wix.local/
+*.local.json
+
+# --- 4. DEPENDENCIAS ---
+node_modules/
+.npm/
+.pnp.*
+
+# --- 5. TESTS Y COBERTURA ---
+coverage/
+htmlcov/
+.coverage
+*.lcov
+test-results/
+vitest-report/
+src/backend/__tests__/test-results.json
+backend/__tests__/test-results.json
+
+# --- 6. LOGS ---
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+INSTALL_LOG.txt
 
-# Editor/IDE
+# --- 7. BUILD / ARTEFACTOS ---
+dist/
+build/
+target/
+out/
+*.o
+*.obj
+*.out
+
+# --- 8. SALIDA DEL ORQUESTADOR M365 (artefactos locales, no al repo) ---
+CapaExterna_MarianMadrid/
+
+# --- 9. EDITOR / IDE ---
 .vscode/
 .idea/
 *.swp
 *.swo
 *.tmp
+*~
 
-# Build artifacts
-dist/
-build/
-target/
-*.o
-*.obj
-*.out
+# --- 10. SISTEMA OPERATIVO ---
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
 
-# Python
+# --- 11. PYTHON (scripts auxiliares) ---
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.py.class
 *.py.obj
+.venv/
+venv/
 
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Compression
+# --- 12. COMPRESION / PAQUETERIA (paquetes de gestoria nunca al repo) ---
 *.zip
 *.gz
 *.tar
@@ -64,4 +121,11 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-```
+
+# --- 13. TEMPORALES Y BACKUPS ---
+*.bak
+*.backup
+*.old
+*.orig
+tmp/
+temp/
